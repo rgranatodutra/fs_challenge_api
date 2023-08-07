@@ -16,14 +16,14 @@ export class ClientsPrismaRepository implements ClientsRepository {
         const client = new Client();
         Object.assign(client, data);
 
-        const newClient = await this.database.client.create({ data });
+        const newClient = await this.database.client.create({ data: client });
 
         return plainToInstance(Client, newClient);
     }
 
     public async update(id: number, data: UpdateClientDto): Promise<Client> {
         const updatedClient = await this.database.client.update({
-            where: { id }, data
+            where: { id }, data: { ...data, updatedAt: new Date() }
         });
 
         return plainToInstance(Client, updatedClient);

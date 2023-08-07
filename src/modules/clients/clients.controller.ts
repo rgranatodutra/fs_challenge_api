@@ -5,7 +5,9 @@ import { UpdateClientDto } from './dto/update-client.dto';
 
 @Controller('clients')
 export class ClientsController {
-	constructor(private readonly clientsService: ClientsService) { }
+	constructor(
+		private readonly clientsService: ClientsService,
+	) { }
 
 	@Post()
 	public async create(

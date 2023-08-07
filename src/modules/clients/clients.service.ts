@@ -57,6 +57,23 @@ export class ClientsService {
 
 	public async update(id: number, data: UpdateClientDto) {
 		const findClient = await this.findOne(id);
+
+		const findDuplicatedEmail = await this.repository.getMany({
+			email: data.email
+		});
+
+		if (findDuplicatedEmail.length) {
+			throw new ConflictException("Email already registered");
+		}
+
+		const findDuplicatedPhone = await this.repository.getMany({
+			phone: data.phone
+		});
+
+		if (findDuplicatedPhone.length) {
+			throw new ConflictException("Phone already registered");
+		}
+
 		const updatedClient = findClient && await this.repository.update(id, data);
 
 		return updatedClient;
