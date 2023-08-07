@@ -5,30 +5,39 @@ import { UpdateClientDto } from './dto/update-client.dto';
 
 @Controller('clients')
 export class ClientsController {
-  constructor(private readonly clientsService: ClientsService) {}
+	constructor(private readonly clientsService: ClientsService) { }
 
-  @Post()
-  create(@Body() createClientDto: CreateClientDto) {
-    return this.clientsService.create(createClientDto);
-  }
+	@Post()
+	public async create(
+		@Body() createClientDto: CreateClientDto
+	) {
+		return await this.clientsService.create(createClientDto);
+	}
 
-  @Get()
-  findAll() {
-    return this.clientsService.findAll();
-  }
+	@Get()
+	public async findAll() {
+		return await this.clientsService.findAll();
+	}
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.clientsService.findOne(+id);
-  }
+	@Get(':id')
+	public async findOne(
+		@Param('id') id: string
+	) {
+		return await this.clientsService.findOne(+id);
+	}
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateClientDto: UpdateClientDto) {
-    return this.clientsService.update(+id, updateClientDto);
-  }
+	@Patch(':id')
+	public async update(
+		@Param('id') id: string,
+		@Body() updateClientDto: UpdateClientDto
+	) {
+		return await this.clientsService.update(+id, updateClientDto);
+	}
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.clientsService.remove(+id);
-  }
+	@Delete(':id')
+	public async remove(
+		@Param('id') id: string
+	) {
+		return await this.clientsService.remove(+id);
+	}
 }
