@@ -5,4 +5,5 @@ export class Contact {
     email: string;
     phone: string;
     createdAt: Date;
+    updatedAt: Date;
 }

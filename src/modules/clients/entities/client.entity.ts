@@ -4,4 +4,5 @@ export class Client {
     email: string;
     phone: string;
     createdAt: Date;
+    updatedAt: Date;
 }

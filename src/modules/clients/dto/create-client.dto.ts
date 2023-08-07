@@ -3,7 +3,7 @@ import { IsEmail, IsPhoneNumber, IsString, MaxLength, MinLength } from 'class-va
 export class CreateClientDto {
     @IsString()
     @MinLength(10)
-    @MaxLength(120)
+    @MaxLength(30)
     fullName: string;
 
     @IsEmail()
